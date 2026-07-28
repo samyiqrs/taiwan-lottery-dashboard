@@ -2,8 +2,8 @@ name: Update lottery data
 
 on:
   schedule:
-    # 22:00 Asia/Taipei (UTC+8)
-    - cron: "0 14 * * *"
+    # 22:30 Asia/Taipei (UTC+8); leaves time for official results to settle.
+    - cron: "30 14 * * *"
   workflow_dispatch:
 
 permissions:
@@ -16,6 +16,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
